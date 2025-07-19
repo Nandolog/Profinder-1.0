@@ -1,0 +1,27 @@
+# Archivos y carpetas de compilación
+bin/
+obj/
+
+# Configuración del IDE (Visual Studio)
+.vs/
+*.user
+*.suo
+
+# Archivos temporales
+*.DS_Store
+*.log
+*.tmp
+
+# Caché de plataforma
+Platforms/**/build/
+Resources/**/build/
+
+# Datos de testeo o simulación (si usás UnitTests)
+TestResults/
+
+# Configuraciones de macOS (por si subís desde Mac)
+.idea/
+*.swp
+
+# Paquetes NuGet descargados
+packages/
