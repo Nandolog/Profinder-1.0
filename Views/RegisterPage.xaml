@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Profinder_1._0.Views.RegisterPage"
+             Title="Registro"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <!-- Fondo dinámico según el tema -->
+    <VerticalStackLayout Padding="30" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+
+        <!-- 📛 Nombre completo -->
+        <Entry x:Name="NameEntry"
+               Placeholder="Nombre completo"
+               FontSize="18"
+               WidthRequest="250"
+               TextColor="Black"
+               PlaceholderColor="Gray" />
+
+        <!-- 📧 Correo electrónico -->
+        <Entry x:Name="EmailEntry"
+               Placeholder="Correo electrónico"
+               Keyboard="Email"
+               FontSize="18"
+               WidthRequest="250"
+               TextColor="Black"
+               PlaceholderColor="Gray" />
+
+        <!-- 🔒 Contraseña -->
+        <Entry x:Name="PasswordEntry"
+               Placeholder="Contraseña"
+               IsPassword="True"
+               FontSize="18"
+               WidthRequest="250"
+               TextColor="Black"
+               PlaceholderColor="Gray" />
+
+        <!-- 🔒 Confirmar contraseña -->
+        <Entry x:Name="ConfirmEntry"
+               Placeholder="Confirmar contraseña"
+               IsPassword="True"
+               FontSize="18"
+               WidthRequest="250"
+               TextColor="Black"
+               PlaceholderColor="Gray" />
+
+        <!-- 🟩 Botón de registro -->
+        <Button Text="Registrarse"
+                BackgroundColor="#34C759"
+                TextColor="White"
+                FontSize="18"
+                WidthRequest="250"
+                Clicked="OnRegisterClicked" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Profinder_1._0.Views.MainPage"
+             Title="ProFinder"
+             BackgroundColor="#F7F7F7">
+
+    <Grid>
+
+        <!-- 🌄 Imagen de fondo suave -->
+        <Image Source="fondo_profinder.png"
+               Aspect="AspectFill"
+               Opacity="0.15"
+               IsVisible="True" />
+
+        <!-- 🧭 Contenido principal -->
+        <ScrollView>
+            <VerticalStackLayout Padding="30"
+                                 Spacing="25"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center">
+
+                <!-- 🖼️ Logo más grande con nombre accesible -->
+                <Image x:Name="logo"
+                       Source="logo.png"
+                       HeightRequest="140"
+                       WidthRequest="140"
+                       HorizontalOptions="Center"
+                       Margin="0,30,0,10" />
+
+                <!-- ✨ Subtítulo atractivo -->
+                <Label Text="Conectando profesionales con oportunidades"
+                       FontSize="18"
+                       TextColor="#444"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,10" />
+
+                <!-- 🎛️ Botonera estética agrupada -->
+                <VerticalStackLayout x:Name="ButtonStack"
+                                     Spacing="12"
+                                     WidthRequest="280">
+
+                    <Button Text="🔍 Buscar profesionales"
+                            Clicked="OnGoToMarketplaceClicked"
+                            BackgroundColor="#007AFF"
+                            TextColor="White"
+                            FontSize="16"
+                            CornerRadius="6" />
+
+                    <Button Text="🧑‍💼 Ofrecer mis servicios"
+                            Clicked="OnPublishProfileClicked"
+                            BackgroundColor="#34C759"
+                            TextColor="White"
+                            FontSize="16"
+                            CornerRadius="6" />
+
+                    <Button Text="⚙️ Mi cuenta"
+                            Clicked="OnSettingsClicked"
+                            BackgroundColor="#FFA500"
+                            TextColor="White"
+                            FontSize="16"
+                            CornerRadius="6" />
+
+                    <Button Text="🚪 Cerrar sesión"
+                            Clicked="OnLogoutClicked"
+                            BackgroundColor="#FF3B30"
+                            TextColor="White"
+                            FontSize="16"
+                            CornerRadius="6" />
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

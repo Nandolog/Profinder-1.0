@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Profinder_1._0.Views.MarketplacePage"
+             Title="Buscar Profesionales">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <!-- 🔙 Volver a la página anterior -->
+            <ImageButton Source="back_arrow.png"
+             Clicked="OnBackClicked"
+             BackgroundColor="Transparent"
+             WidthRequest="32"
+             HeightRequest="32"
+             HorizontalOptions="Start"
+             Margin="10"
+             Padding="0"
+             Aspect="AspectFit" />
+
+            <!-- 🔍 Buscador -->
+            <SearchBar Placeholder="Buscar por especialidad..." />
+
+            <!-- 🧑‍🔧 Listado de perfiles -->
+            <CollectionView x:Name="ProjectList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="LightGray" CornerRadius="10" Padding="15" Margin="5">
+                            <HorizontalStackLayout Spacing="15">
+
+                                <!-- 🖼️ Foto del profesional -->
+                                <Frame WidthRequest="70" HeightRequest="70"
+                                       CornerRadius="35"
+                                       Padding="0"
+                                       IsClippedToBounds="True"
+                                       HasShadow="False"
+                                       BackgroundColor="#E0E0E0">
+                                    <Image Source="{Binding FotoUrl}"
+                                        Aspect="AspectFill"
+                                        WidthRequest="70" HeightRequest="70" />
+                                </Frame>
+
+                                <!-- 📋 Información del profesional -->
+                                <VerticalStackLayout Spacing="2">
+                                    <Label Text="{Binding Nombre}" FontSize="18" FontAttributes="Bold" />
+                                    <Label Text="{Binding Especialidad}" FontSize="14" TextColor="Gray" />
+                                    <Label Text="{Binding Ubicacion}" FontSize="14" TextColor="Gray" />
+                                    <Label Text="{Binding Descripcion}" FontSize="13" LineBreakMode="WordWrap" />
+
+                                    <!-- 📞 Contacto -->
+                                    <Label Text="{Binding Correo}" FontSize="12" TextColor="#007AFF" />
+                                    <Label Text="{Binding Telefono}" FontSize="12" TextColor="#007AFF" />
+
+                                    <!-- 👁️ Ver más -->
+                                    <Button Text="Ver perfil completo"
+                                            FontSize="14"
+                                            Clicked="OnViewProfileClicked"
+                                            BackgroundColor="#007AFF"
+                                            TextColor="White"
+                                            CornerRadius="5"
+                                            WidthRequest="150" />
+                                </VerticalStackLayout>
+                                
+
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- ➕ Publicar servicio -->
+            <Button Text="Ofrecer mis servicios"
+                    BackgroundColor="#34C759"
+                    TextColor="White"
+                    FontSize="16"
+                    CornerRadius="8"
+                    Margin="10" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

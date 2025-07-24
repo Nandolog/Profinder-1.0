@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Profinder_1._0.AppShell" 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:Profinder_1._0" 
+    xmlns:views="clr-namespace:Profinder_1._0.Views" 
+    xmlns:Page="clr-namespace:Profinder_1._0.Pages" 
+    Shell.FlyoutBehavior="Disabled" 
+    Title="Profinder_1._0">
+    <ShellContent Title="Bienvenida" ContentTemplate="{DataTemplate views:BienvenidaPage}" Route="bienvenida" />
+    <ShellContent Title="Login" ContentTemplate="{DataTemplate views:LoginPage}" Route="login" />
+    <ShellContent Title="Registro" ContentTemplate="{DataTemplate views:RegisterPage}" Route="register" />
+    <ShellContent Title="Marketplace" ContentTemplate="{DataTemplate views:MarketplacePage}" Route="marketplace" />
+    <ShellContent Title="Main" ContentTemplate="{DataTemplate views:MainPage}" Route="main" />
+    <ShellContent Title="PublishProfile" ContentTemplate="{DataTemplate views:PublishProfilePage}" Route="publishprofile" />
+    <ShellContent Title="Settings" ContentTemplate="{DataTemplate views:SettingsPage}" Route="settings" />
+    <ShellContent Title="Splash" ContentTemplate="{DataTemplate Page:SplashPage}" Route="splash" />
+</Shell>
+

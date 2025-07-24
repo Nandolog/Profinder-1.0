@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Profinder_1._0.Views.BienvenidaPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <!-- Fondo dinámico según el tema -->
+
+    <StackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+        <!-- Layout que organiza los elementos en forma vertical -->
+
+        <Image Source="logo.png"
+               HeightRequest="120"
+               HorizontalOptions="Center" />
+        <!-- Imagen del logo centrado con tamaño fijo -->
+
+        <Label Text="Bienvenido a ProFinder"
+               FontSize="28"
+               HorizontalOptions="Center"
+               TextColor="{DynamicResource PrimaryTextColor}" />
+        <!-- Título con texto centrado y tamaño de fuente grande -->
+
+        <Button Text="Comenzar"
+                Clicked="OnComenzarClicked"
+                BackgroundColor="{DynamicResource ButtonColor}"
+                TextColor="White" />
+        <!-- Botón que dispara una acción al ser presionado -->
+
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Profinder_1._0.Views.PublishProfilePage"
+             Title="Ofrecer mis servicios">
+    
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <!-- 🔙 Volver a la página anterior -->
+        <ImageButton Source="back_arrow.png"
+  Clicked="OnBackClicked"
+  BackgroundColor="Transparent"
+  WidthRequest="32"
+  HeightRequest="32"
+  HorizontalOptions="Start"
+  Margin="10"
+  Padding="0"
+  Aspect="AspectFit" />
+        <!-- Campos para crear perfil -->
+        <Entry Placeholder="Nombre completo" x:Name="NombreEntry" />
+        <Entry Placeholder="Especialidad (ej. Supervisión técnica)" x:Name="EspecialidadEntry" />
+        <Entry Placeholder="Ubicación" x:Name="UbicacionEntry" />
+        <Editor Placeholder="Descripción de experiencia" x:Name="DescripcionEditor" HeightRequest="100" />
+
+        <!-- Botón publicar -->
+        <Button Text="Publicar perfil" Clicked="OnPublishClicked" BackgroundColor="#34C759" TextColor="White" />
+    </VerticalStackLayout>
+</ContentPage>
