@@ -69,18 +69,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-<<<<<<< Updated upstream
-=======
-	  <None Include=".githud\CONTRIBUTING.md" />
-	  <None Include=".githud\ISUUE_TEMPLETE\bug_report.md" />
-	  <None Include=".githud\PULL_REQUEST_TEMPLATE.md" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Pages\DetailPage.xaml">
+	 <MauiXaml Update="Pages\DetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
->>>>>>> Stashed changes
 	  <MauiXaml Update="Pages\SplashPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

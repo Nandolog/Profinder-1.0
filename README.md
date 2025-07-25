@@ -45,4 +45,11 @@ ProFinder es una app móvil construida con .NET MAUI que busca conectar personas
 
 ## 📦 Organización del repositorio
 
-Profinder/ ├── Models/ ├── Views/ ├── Pages/ ├── Resources/ ├── Platforms/ ├── App.xaml & AppShell.xaml ├── MauiProgram.cs ├── README.md └── .gitignore
+Profinder## ✨ Mejoras recientes
+
+- Refactor de navegación Splash → AppShell
+- Animación táctil en botón "Volver" con `ScaleTo` + `FadeTo`
+- Navegación directa hacia `MainPage` con `GoToAsync("main")`
+- `.gitignore` personalizado implementado
+- Flujo de Git desde Visual Studio para guardar cambios y sincronizar con GitHub
+/ ├── Models/ ├── Views/ ├── Pages/ ├── Resources/ ├── Platforms/ ├── App.xaml & AppShell.xaml ├── MauiProgram.cs ├── README.md └── .gitignore
