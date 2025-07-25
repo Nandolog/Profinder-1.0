@@ -3,39 +3,82 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Profinder_1._0.Views.MarketplacePage"
              Title="Buscar Profesionales">
+
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10">
+        <VerticalStackLayout Padding="20" Spacing="15">
+
             <!-- 🔙 Volver a la página anterior -->
             <ImageButton Source="back_arrow.png"
-             Clicked="OnBackClicked"
-             BackgroundColor="Transparent"
-             WidthRequest="32"
-             HeightRequest="32"
-             HorizontalOptions="Start"
-             Margin="10"
-             Padding="0"
-             Aspect="AspectFit" />
+                         Clicked="OnBackClicked"
+                         BackgroundColor="Transparent"
+                         WidthRequest="32"
+                         HeightRequest="32"
+                         HorizontalOptions="Start"
+                         Margin="0,10"
+                         Aspect="AspectFit" />
 
             <!-- 🔍 Buscador -->
-            <SearchBar Placeholder="Buscar por especialidad..." />
+            <SearchBar x:Name="Buscador"
+                       Placeholder="Buscar por especialidad..." 
+                       TextChanged="OnSearchTextChanged"/>
 
-            <!-- 🧑‍🔧 Listado de perfiles -->
+            <!-- 🧭 Filtro por Especialidad -->
+            <Picker x:Name="EspecialidadPicker"
+                    Title="Filtrar por especialidad"
+                    SelectedIndexChanged="OnEspecialidadSelected">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Electricista</x:String>
+                        <x:String>Plomero</x:String>
+                        <x:String>Carpintero</x:String>
+                        <x:String>Jardinero</x:String>
+                        <x:String>Pintor</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- 🌍 Filtro por Ciudad -->
+            <Picker x:Name="CiudadPicker"
+                    Title="Filtrar por ciudad"
+                    SelectedIndexChanged="OnCiudadSelected">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Villa Hayes</x:String>
+                        <x:String>Remansito</x:String>
+                        <x:String>Benjamín Aceval</x:String>
+                        <x:String>Cerrito</x:String>
+                        <x:String>Costa</x:String>
+                        <x:String>Mariano Roque Alonso</x:String>
+                        <x:String>Limpio</x:String>
+                        <x:String>Loma Pytá</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- 🧑‍🔧 Listado de profesionales -->
             <CollectionView x:Name="ProjectList">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="LightGray" CornerRadius="10" Padding="15" Margin="5">
+                        <Frame BorderColor="LightGray"
+                               CornerRadius="10"
+                               Padding="15"
+                               Margin="5"
+                               HasShadow="True">
+
                             <HorizontalStackLayout Spacing="15">
 
                                 <!-- 🖼️ Foto del profesional -->
-                                <Frame WidthRequest="70" HeightRequest="70"
+                                <Frame WidthRequest="70"
+                                       HeightRequest="70"
                                        CornerRadius="35"
                                        Padding="0"
                                        IsClippedToBounds="True"
                                        HasShadow="False"
                                        BackgroundColor="#E0E0E0">
                                     <Image Source="{Binding FotoUrl}"
-                                        Aspect="AspectFill"
-                                        WidthRequest="70" HeightRequest="70" />
+                                           Aspect="AspectFill"
+                                           WidthRequest="70"
+                                           HeightRequest="70" />
                                 </Frame>
 
                                 <!-- 📋 Información del profesional -->
@@ -44,12 +87,9 @@
                                     <Label Text="{Binding Especialidad}" FontSize="14" TextColor="Gray" />
                                     <Label Text="{Binding Ubicacion}" FontSize="14" TextColor="Gray" />
                                     <Label Text="{Binding Descripcion}" FontSize="13" LineBreakMode="WordWrap" />
-
-                                    <!-- 📞 Contacto -->
                                     <Label Text="{Binding Correo}" FontSize="12" TextColor="#007AFF" />
                                     <Label Text="{Binding Telefono}" FontSize="12" TextColor="#007AFF" />
 
-                                    <!-- 👁️ Ver más -->
                                     <Button Text="Ver perfil completo"
                                             FontSize="14"
                                             Clicked="OnViewProfileClicked"
@@ -58,21 +98,12 @@
                                             CornerRadius="5"
                                             WidthRequest="150" />
                                 </VerticalStackLayout>
-                                
 
                             </HorizontalStackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-            <!-- ➕ Publicar servicio -->
-            <Button Text="Ofrecer mis servicios"
-                    BackgroundColor="#34C759"
-                    TextColor="White"
-                    FontSize="16"
-                    CornerRadius="8"
-                    Margin="10" />
 
         </VerticalStackLayout>
     </ScrollView>

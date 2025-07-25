@@ -1,6 +1,6 @@
 ﻿using Profinder_1._0.Pages;
 using Profinder_1._0.Views;
-namespace Profinder_1._0
+namespace Profinder_1._0.Navigation
 {
     public partial class AppShell : Shell
     {
@@ -17,6 +17,7 @@ namespace Profinder_1._0
             Routing.RegisterRoute("main", typeof(MainPage));
             Routing.RegisterRoute("publishprofile", typeof(PublishProfilePage));
             Routing.RegisterRoute("settings", typeof(SettingsPage));
+            Routing.RegisterRoute("detail/:id", typeof(DetailPage));
 
 
         }
