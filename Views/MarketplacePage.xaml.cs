@@ -14,6 +14,8 @@ namespace Profinder_1._0.Views
         public MarketplacePage()
         {
             InitializeComponent();
+            Shell.SetNavBarIsVisible(this, false);
+
 
             ProfesionalesOriginal = new ObservableCollection<PerfilProfesional>
             {
@@ -105,5 +107,25 @@ namespace Profinder_1._0.Views
             }
 
         }
+        private void OnAgregarEspecialidadClicked(object sender, EventArgs e)
+        {
+            var nueva = NuevaEspecialidadEntry.Text?.Trim();
+            if (!string.IsNullOrEmpty(nueva) && !EspecialidadPicker.Items.Contains(nueva))
+            {
+                EspecialidadPicker.Items.Add(nueva);
+                NuevaEspecialidadEntry.Text = string.Empty;
+            }
+        }
+
+        private void OnAgregarCiudadClicked(object sender, EventArgs e)
+        {
+            var nueva = NuevaCiudadEntry.Text?.Trim();
+            if (!string.IsNullOrEmpty(nueva) && !CiudadPicker.Items.Contains(nueva))
+            {
+                CiudadPicker.Items.Add(nueva);
+                NuevaCiudadEntry.Text = string.Empty;
+            }
+        }
+
     }
 }

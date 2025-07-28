@@ -7,6 +7,7 @@ namespace Profinder_1._0.Views
         public MainPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false); // 👈 Oculta la flecha automática
         }
 
         private async void OnGoToMarketplaceClicked(object sender, EventArgs e)

@@ -53,3 +53,13 @@ Profinder## ✨ Mejoras recientes
 - `.gitignore` personalizado implementado
 - Flujo de Git desde Visual Studio para guardar cambios y sincronizar con GitHub
 / ├── Models/ ├── Views/ ├── Pages/ ├── Resources/ ├── Platforms/ ├── App.xaml & AppShell.xaml ├── MauiProgram.cs ├── README.md └── .gitignore
+
+## 🌟 Mejoras en MarketplacePage
+
+- Se refinó la apariencia visual con márgenes, sombras suaves, colores elegantes y separación visual en cada card.
+- Se implementó un header personalizado que reemplaza la barra de navegación de Shell, logrando control total sobre la cabecera.
+- Los filtros por especialidad y ciudad fueron estilizados con frames y colores coherentes con la interfaz.
+- Se agregó la funcionalidad de **agregar nuevas ciudades y especialidades desde la UI**, permitiendo un sistema colaborativo y extensible.
+- La lógica de filtrado se mantiene reactiva y clara, documentada para futuros colaboradores.
+
+Esta página ya funciona como componente independiente, visualmente atractivo y listo para escalar.

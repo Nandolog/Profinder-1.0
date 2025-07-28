@@ -8,13 +8,13 @@
     xmlns:Page="clr-namespace:Profinder_1._0.Pages" 
     Shell.FlyoutBehavior="Disabled" 
     Title="Profinder_1._0">
-    <ShellContent Title="Bienvenida" ContentTemplate="{DataTemplate views:BienvenidaPage}" Route="bienvenida" />
-    <ShellContent Title="Login" ContentTemplate="{DataTemplate views:LoginPage}" Route="login" />
-    <ShellContent Title="Registro" ContentTemplate="{DataTemplate views:RegisterPage}" Route="register" />
-    <ShellContent Title="Marketplace" ContentTemplate="{DataTemplate views:MarketplacePage}" Route="marketplace" />
-    <ShellContent Title="Main" ContentTemplate="{DataTemplate views:MainPage}" Route="main" />
-    <ShellContent Title="PublishProfile" ContentTemplate="{DataTemplate views:PublishProfilePage}" Route="publishprofile" />
-    <ShellContent Title="Settings" ContentTemplate="{DataTemplate views:SettingsPage}" Route="settings" />
+    <ShellContent Title="Bienvenida" ContentTemplate="{DataTemplate views:BienvenidaPage}" Route="bienvenida" Shell.NavBarIsVisible="False"/>
+    <ShellContent Title="Login" ContentTemplate="{DataTemplate views:LoginPage}" Route="login" Shell.NavBarIsVisible="False"/>
+    <ShellContent Title="Registro" ContentTemplate="{DataTemplate views:RegisterPage}" Route="register" Shell.NavBarIsVisible="False" />
+    <ShellContent  ContentTemplate="{DataTemplate views:MarketplacePage}"  Route="marketplace" Shell.FlyoutBehavior="Disabled" />
+    <ShellContent Title="Main" ContentTemplate="{DataTemplate views:MainPage}" Route="main" Shell.NavBarIsVisible="False" />
+    <ShellContent Title="PublishProfile" ContentTemplate="{DataTemplate views:PublishProfilePage}" Route="publishprofile" Shell.NavBarIsVisible="False" />
+    <ShellContent Title="Settings" ContentTemplate="{DataTemplate views:SettingsPage}" Route="settings" Shell.NavBarIsVisible="False" />
     <ShellContent Title="Splash" ContentTemplate="{DataTemplate Page:SplashPage}" Route="splash" />
 </Shell>
 

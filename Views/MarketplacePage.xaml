@@ -1,73 +1,169 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Profinder_1._0.Views.MarketplacePage"
-             Title="Buscar Profesionales">
+             x:Class="Profinder_1._0.Views.MarketplacePage">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
 
-            <!-- 🔙 Volver a la página anterior -->
-            <ImageButton Source="back_arrow.png"
-                         Clicked="OnBackClicked"
-                         BackgroundColor="Transparent"
-                         WidthRequest="32"
-                         HeightRequest="32"
-                         HorizontalOptions="Start"
-                         Margin="0,10"
-                         Aspect="AspectFit" />
+            <!-- 🧭 Encabezado personalizado -->
+            <Grid BackgroundColor="#F9F9F9"
+      Padding="10"
+      Margin="0,0,0,10">
+
+                <HorizontalStackLayout Spacing="10"
+                           VerticalOptions="Center">
+
+                    <!-- 🔙 Botón de retroceso bien alineado -->
+                    <ImageButton Source="back_arrow.png"
+                     Clicked="OnBackClicked"
+                     BackgroundColor="Transparent"
+                     WidthRequest="32"
+                     HeightRequest="32"
+                     Aspect="AspectFit"
+                     VerticalOptions="Center" />
+
+                    <!-- 📝 Título con mejor posición -->
+                    <Label Text="Buscar Profesionales"
+               FontSize="20"
+               FontAttributes="Bold"
+               VerticalOptions="Center"
+               TextColor="Black" />
+                </HorizontalStackLayout>
+            </Grid>
 
             <!-- 🔍 Buscador -->
-            <SearchBar x:Name="Buscador"
-                       Placeholder="Buscar por especialidad..." 
-                       TextChanged="OnSearchTextChanged"/>
+            <Frame BorderColor="#DADADA"
+                   CornerRadius="10"
+                   Padding="5"
+                   BackgroundColor="White"
+                   HasShadow="False"
+                   Margin="0,10">
+                <SearchBar x:Name="Buscador"
+                           Placeholder="Buscar por especialidad..."
+                           FontSize="14"
+                           TextColor="Black"
+                           PlaceholderColor="#888"
+                           CancelButtonColor="#339CFF"
+                           HeightRequest="44"
+                           TextChanged="OnSearchTextChanged" />
+            </Frame>
 
-            <!-- 🧭 Filtro por Especialidad -->
-            <Picker x:Name="EspecialidadPicker"
-                    Title="Filtrar por especialidad"
-                    SelectedIndexChanged="OnEspecialidadSelected">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Electricista</x:String>
-                        <x:String>Plomero</x:String>
-                        <x:String>Carpintero</x:String>
-                        <x:String>Jardinero</x:String>
-                        <x:String>Pintor</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+            <!-- 📂 Filtro por Especialidad -->
+            <Frame BorderColor="#DADADA"
+                   CornerRadius="10"
+                   Padding="5"
+                   BackgroundColor="White"
+                   HasShadow="False">
+                
+                <Picker x:Name="EspecialidadPicker"
+                        Title="Filtrar por especialidad"
+                        TitleColor="#888"
+                        TextColor="Black"
+                        FontSize="14"
+                        HeightRequest="44"
+                        SelectedIndexChanged="OnEspecialidadSelected">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Electricista</x:String>
+                            <x:String>Plomero</x:String>
+                            <x:String>Carpintero</x:String>
+                            <x:String>Jardinero</x:String>
+                            <x:String>Pintor</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Frame>
 
-            <!-- 🌍 Filtro por Ciudad -->
-            <Picker x:Name="CiudadPicker"
-                    Title="Filtrar por ciudad"
-                    SelectedIndexChanged="OnCiudadSelected">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Villa Hayes</x:String>
-                        <x:String>Remansito</x:String>
-                        <x:String>Benjamín Aceval</x:String>
-                        <x:String>Cerrito</x:String>
-                        <x:String>Costa</x:String>
-                        <x:String>Mariano Roque Alonso</x:String>
-                        <x:String>Limpio</x:String>
-                        <x:String>Loma Pytá</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+            <!-- 🌎 Filtro por Ciudad -->
+            <Frame BorderColor="#DADADA"
+                   CornerRadius="10"
+                   Padding="5"
+                   BackgroundColor="White"
+                   HasShadow="False">
+                <Picker x:Name="CiudadPicker"
+                        Title="Filtrar por ciudad"
+                        TitleColor="#888"
+                        TextColor="Black"
+                        FontSize="14"
+                        HeightRequest="44"
+                        SelectedIndexChanged="OnCiudadSelected">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Villa Hayes</x:String>
+                            <x:String>Remansito</x:String>
+                            <x:String>Benjamín Aceval</x:String>
+                            <x:String>Cerrito</x:String>
+                            <x:String>Costa</x:String>
+                            <x:String>Mariano Roque Alonso</x:String>
+                            <x:String>Limpio</x:String>
+                            <x:String>Loma Pytá</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                
+            </Frame>
+            <!-- ➕ Agregar nueva especialidad -->
+            <Frame BorderColor="#DADADA"
+                   CornerRadius="10"
+                   Padding="10"
+                   BackgroundColor="White"
+                   HasShadow="False"
+                   Margin="0,10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Agregar nueva especialidad" FontAttributes="Bold" />
+                    <Entry x:Name="NuevaEspecialidadEntry"
+                           Placeholder="Ej: Cerrajero"
+                           PlaceholderColor="#999"
+                           TextColor="Black"
+                           FontSize="14" />
+                    <Button Text="Agregar especialidad"
+                            Clicked="OnAgregarEspecialidadClicked"
+                            BackgroundColor="#339CFF"
+                            TextColor="White"
+                            CornerRadius="8" />
+                </VerticalStackLayout>
+            </Frame>
 
-            <!-- 🧑‍🔧 Listado de profesionales -->
-            <CollectionView x:Name="ProjectList">
+            <!-- ➕ Agregar nueva ciudad -->
+            <Frame BorderColor="#DADADA"
+                   CornerRadius="10"
+                   Padding="10"
+                   BackgroundColor="White"
+                   HasShadow="False"
+                   Margin="0,10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Agregar nueva ciudad" FontAttributes="Bold" />
+                    <Entry x:Name="NuevaCiudadEntry"
+                           Placeholder="Ej: Falcón"
+                           PlaceholderColor="#999"
+                           TextColor="Black"
+                           FontSize="14" />
+                    <Button Text="Agregar ciudad"
+                            Clicked="OnAgregarCiudadClicked"
+                            BackgroundColor="#339CFF"
+                            TextColor="White"
+                            CornerRadius="8" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- 👨‍🔧 Listado de profesionales -->
+            <CollectionView x:Name="ProjectList"
+                            Margin="0,20,0,0"
+                            ItemsLayout="VerticalList"
+                            SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="LightGray"
-                               CornerRadius="10"
-                               Padding="15"
-                               Margin="5"
+                        <Frame BorderColor="#DADADA"
+                               CornerRadius="12"
+                               Padding="12"
+                               Margin="10"
+                               BackgroundColor="White"
                                HasShadow="True">
 
                             <HorizontalStackLayout Spacing="15">
 
-                                <!-- 🖼️ Foto del profesional -->
+                                <!-- 📸 Foto -->
                                 <Frame WidthRequest="70"
                                        HeightRequest="70"
                                        CornerRadius="35"
@@ -81,24 +177,37 @@
                                            HeightRequest="70" />
                                 </Frame>
 
-                                <!-- 📋 Información del profesional -->
-                                <VerticalStackLayout Spacing="2">
-                                    <Label Text="{Binding Nombre}" FontSize="18" FontAttributes="Bold" />
-                                    <Label Text="{Binding Especialidad}" FontSize="14" TextColor="Gray" />
-                                    <Label Text="{Binding Ubicacion}" FontSize="14" TextColor="Gray" />
-                                    <Label Text="{Binding Descripcion}" FontSize="13" LineBreakMode="WordWrap" />
-                                    <Label Text="{Binding Correo}" FontSize="12" TextColor="#007AFF" />
-                                    <Label Text="{Binding Telefono}" FontSize="12" TextColor="#007AFF" />
+                                <!-- 📋 Info profesional -->
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="{Binding Nombre}" 
+                                           FontSize="18" 
+                                           FontAttributes="Bold" 
+                                           TextColor="Black" />
+                                    <Label Text="{Binding Especialidad}" 
+                                           FontSize="14" 
+                                           TextColor="#666" />
+                                    <Label Text="{Binding Ubicacion}" 
+                                           FontSize="14" 
+                                           TextColor="#666" />
+                                    <Label Text="{Binding Descripcion}" 
+                                           FontSize="13" 
+                                           TextColor="#444" 
+                                           LineBreakMode="WordWrap" />
+                                    <Label Text="{Binding Correo}" 
+                                           FontSize="12" 
+                                           TextColor="#339CFF" />
+                                    <Label Text="{Binding Telefono}" 
+                                           FontSize="12" 
+                                           TextColor="#339CFF" />
 
                                     <Button Text="Ver perfil completo"
                                             FontSize="14"
-                                            Clicked="OnViewProfileClicked"
-                                            BackgroundColor="#007AFF"
+                                            BackgroundColor="#339CFF"
                                             TextColor="White"
-                                            CornerRadius="5"
-                                            WidthRequest="150" />
+                                            CornerRadius="6"
+                                            WidthRequest="160"
+                                            Clicked="OnViewProfileClicked" />
                                 </VerticalStackLayout>
-
                             </HorizontalStackLayout>
                         </Frame>
                     </DataTemplate>

@@ -7,6 +7,7 @@ namespace Profinder_1._0.Views
         public PublishProfilePage()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false); // 👈 Oculta la flecha automática
         }
 
         private async void OnPublishClicked(object sender, EventArgs e)
