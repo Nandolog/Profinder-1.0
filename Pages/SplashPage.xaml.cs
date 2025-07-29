@@ -27,7 +27,7 @@ public partial class SplashPage : ContentPage
         await Task.Delay(800);
 
         // Salta directamente a la página "Bienvenida" registrada en AppShell, ignorando historial
-        Application.Current.MainPage = new AppShell();
+        Application.Current.MainPage = new Navigation.AppShell();
 
 
 

@@ -5,6 +5,7 @@ public partial class RegisterPage : ContentPage
     public RegisterPage()
     {
         InitializeComponent();
+        NavigationPage.SetHasBackButton(this, false); // 👈 Oculta la flecha automática
     }
 
     private async void OnRegisterClicked(object sender, EventArgs e)

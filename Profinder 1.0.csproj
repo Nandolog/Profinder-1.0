@@ -69,6 +69,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+    feature/marketplace-ui-enhancement
+	 <MauiXaml Update="Pages\DetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+
+ main
 	  <MauiXaml Update="Pages\SplashPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

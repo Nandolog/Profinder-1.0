@@ -5,7 +5,8 @@ public partial class SettingsPage : ContentPage
 	public SettingsPage()
 	{
 		InitializeComponent();
-	}
+        NavigationPage.SetHasBackButton(this, false); // 👈 Oculta la flecha automática
+    }
     private async void OnBackClicked(object sender, EventArgs e)
     {
         var button = sender as VisualElement;

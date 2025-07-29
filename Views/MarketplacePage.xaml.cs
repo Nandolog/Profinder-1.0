@@ -1,26 +1,30 @@
 ﻿using Microsoft.Maui.Controls;
+using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Profinder_1._0.Models;
 
 namespace Profinder_1._0.Views
 {
     public partial class MarketplacePage : ContentPage
     {
-        public ObservableCollection<PerfilProfesional> Profesionales { get; set; }
+        public ObservableCollection<PerfilProfesional> ProfesionalesOriginal { get; set; }
+        public ObservableCollection<PerfilProfesional> ProfesionalesFiltrados { get; set; }
 
         public MarketplacePage()
         {
-            InitializeComponent(); // 🔄 Esto debe compilar correctamente si el XAML está bien vinculado
+            InitializeComponent();
+            Shell.SetNavBarIsVisible(this, false);
 
-            // 🧪 Cargar perfiles simulados
-            Profesionales = new ObservableCollection<PerfilProfesional>
+
+            ProfesionalesOriginal = new ObservableCollection<PerfilProfesional>
             {
                 new ()
                 {
                     Nombre = "María López",
-                    Especialidad = "Supervisión técnica",
-                    Ubicacion = "Asunción",
-                    Descripcion = "Ingeniera con 5 años de experiencia en industria alimentaria.",
+                    Especialidad = "Electricista",
+                    Ubicacion = "Villa Hayes",
+                    Descripcion = "Instalaciones eléctricas certificadas.",
                     Correo = "maria@example.com",
                     Telefono = "0981-123456",
                     FotoUrl = "maria.png"
@@ -28,51 +32,100 @@ namespace Profinder_1._0.Views
                 new ()
                 {
                     Nombre = "Juan Torres",
-                    Especialidad = "Recursos Humanos",
-                    Ubicacion = "Luque",
-                    Descripcion = "Especialista en reclutamiento y desarrollo de equipos.",
+                    Especialidad = "Plomero",
+                    Ubicacion = "Remansito",
+                    Descripcion = "Plomería residencial y comercial.",
                     Correo = "juan@example.com",
                     Telefono = "0971-654321",
                     FotoUrl = "juan.png"
                 }
+                // 💡 Agregá más perfiles para testear la interfaz
             };
 
-            // 🔗 Enlazar la lista al CollectionView definido en XAML
-            ProjectList.ItemsSource = Profesionales;
+            ProfesionalesFiltrados = new ObservableCollection<PerfilProfesional>(ProfesionalesOriginal);
+            ProjectList.ItemsSource = ProfesionalesFiltrados;
         }
 
-        // 🎯 Acción al pulsar “Ver perfil completo”
+        private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void OnEspecialidadSelected(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void OnCiudadSelected(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void AplicarFiltros()
+        {
+            string textoBuscado = Buscador.Text?.ToLower() ?? "";
+            string especialidadSeleccionada = EspecialidadPicker.SelectedItem?.ToString() ?? "";
+            string ciudadSeleccionada = CiudadPicker.SelectedItem?.ToString() ?? "";
+
+            var resultados = ProfesionalesOriginal.Where(p =>
+                (string.IsNullOrEmpty(textoBuscado) || p.Especialidad.ToLower().Contains(textoBuscado)) &&
+                (string.IsNullOrEmpty(especialidadSeleccionada) || p.Especialidad == especialidadSeleccionada) &&
+                (string.IsNullOrEmpty(ciudadSeleccionada) || p.Ubicacion == ciudadSeleccionada)
+            );
+
+            ProfesionalesFiltrados.Clear();
+            foreach (var p in resultados)
+
+                ProfesionalesFiltrados.Add(p);
+        }
+
         private async void OnViewProfileClicked(object sender, EventArgs e)
         {
-            var boton = sender as Button;
-            var perfil = boton?.BindingContext as PerfilProfesional;
-
-            if (perfil != null)
+            if (sender is Button boton && boton.BindingContext is PerfilProfesional perfil)
             {
                 await DisplayAlert(perfil.Nombre,
                     $"Especialidad: {perfil.Especialidad}\nUbicación: {perfil.Ubicacion}\n{perfil.Descripcion}",
                     "Cerrar");
             }
         }
+
         private async void OnBackClicked(object sender, EventArgs e)
         {
-            var button = sender as VisualElement;
+            if (sender is VisualElement button)
+            {
+                await Task.WhenAll(
+                    button.ScaleTo(0.9, 100),
+                    button.FadeTo(0.5, 100)
+                );
 
-            // ✨ Animación de retroceso con efecto táctil
-            _ = await Task.WhenAll(
-                button.ScaleTo(0.9, 100),
-                button.FadeTo(0.5, 100)
-            );
+                await Task.WhenAll(
+                    button.ScaleTo(1, 100),
+                    button.FadeTo(1, 100)
+                );
 
-            await Task.WhenAll(
-                button.ScaleTo(1, 100),
-                button.FadeTo(1, 100)
-            );
+                await Shell.Current.GoToAsync("main");
+            }
 
-            // 🔙 Navegación hacia atrás
-            await Shell.Current.GoToAsync("main");
+        }
+        private void OnAgregarEspecialidadClicked(object sender, EventArgs e)
+        {
+            var nueva = NuevaEspecialidadEntry.Text?.Trim();
+            if (!string.IsNullOrEmpty(nueva) && !EspecialidadPicker.Items.Contains(nueva))
+            {
+                EspecialidadPicker.Items.Add(nueva);
+                NuevaEspecialidadEntry.Text = string.Empty;
+            }
         }
 
+        private void OnAgregarCiudadClicked(object sender, EventArgs e)
+        {
+            var nueva = NuevaCiudadEntry.Text?.Trim();
+            if (!string.IsNullOrEmpty(nueva) && !CiudadPicker.Items.Contains(nueva))
+            {
+                CiudadPicker.Items.Add(nueva);
+                NuevaCiudadEntry.Text = string.Empty;
+            }
+        }
 
     }
 }
